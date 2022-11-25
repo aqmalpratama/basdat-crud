@@ -36,8 +36,8 @@
                     <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
                 </div>
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <label for="email" class="form-label">Email address</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="religion" class="form-label">Religion</label>
