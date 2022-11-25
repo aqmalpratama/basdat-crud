@@ -2,20 +2,33 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <title>Hello, world!</title>
+    <title>Add Page</title>
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">My App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="index.php">Home</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="mt-4">
-            <a href="index.php" class="btn btn-primary">Back to Home</a><br /><br />
+
             <h3 class="mb-3">Add New Mahasiswa</h3>
             <form action="add.php" method="post" name="form1">
                 <div class="mb-3">
@@ -57,16 +70,13 @@
                     <input type="text" class="form-control" name="study_program" placeholder="Enter your study program">
                 </div>
                 <input type="submit" class="btn btn-primary" name="submit" value="Submit">
+                <a href="index.php" class="btn btn-outline-primary">Back to Home</a>
             </form>
 
         </div>
     </div>
 
-    <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
 
     <?php
     $post = $_POST;
@@ -78,8 +88,8 @@
         $study_program = $post['study_program'];
 
         include_once("config.php");
-        $error = false;
 
+        $error = false;
         if (empty($email)) {
             $error = true;
             echo '<script>alert("Email is required")</script>';
@@ -93,6 +103,8 @@
 
         if (!$error) {
             $result = mysqli_query($mysqli, "INSERT INTO mahasiswa_main(name, religion, gender, email_address, study_program) VALUES('$name', '$religion', '$gender', '$email', '$study_program')");
+            echo '<script>alert("Data added successfully")</script>';
+            echo '<script>window.location.href = "index.php"</script>';
         }
     }
     ?>
